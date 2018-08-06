@@ -1,12 +1,18 @@
 #ACCESS
 
 variable "aws_access_key" {
-  default = "****"
+  default = "***"
 }
 
 variable "aws_secret_key" {
-  default = "****"
+  default = "***"
 }
+
+resource "aws_key_pair" "testUser" {
+  key_name   = "testUser"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
+}
+
 
 # REGIONS AND SUBNETS
 
@@ -49,4 +55,35 @@ variable "private_subnet_tag" {
 
 variable "public_subnet_tag" {
   default = "terraform public subnet"
+}
+
+### AWS Users
+
+variable "aws_key_name" {
+  default = "testUser"
+}
+
+# AMI MAP
+
+variable "amis" {
+  type = "map"
+  description = "AMIs by region"
+  default = {
+    us-east-2 = "ami-8c122be9"
+  }
+}
+
+### SECURITY GROUP TAGS
+
+variable "db_security_group_tag"{
+  default = "DB Security Group"
+}
+
+variable "web_security_group_tag" {
+  default = "Web security Group"
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = "${aws_subnet.terraform_public_subnet.id}"
+  route_table_id = "${aws_route_table.r.id}"
 }
