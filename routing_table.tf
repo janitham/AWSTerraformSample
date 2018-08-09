@@ -1,4 +1,4 @@
-resource "aws_route_table" "r" {
+resource "aws_route_table" "route_table" {
   vpc_id = "${aws_vpc.terraform_vpc.id}"
 
   route {
@@ -6,12 +6,7 @@ resource "aws_route_table" "r" {
     gateway_id = "${aws_internet_gateway.igw.id}"
   }
 
-#  route {
-#    ipv6_cidr_block = "::/0"
-#    egress_only_gateway_id = "${aws_egress_only_internet_gateway.foo.id}"
-#  }
-
   tags {
-    Name = "main"
+    Name = "Terraform Main Routing Table"
   }
 }

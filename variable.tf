@@ -83,7 +83,7 @@ variable "web_security_group_tag" {
   default = "Web security Group"
 }
 
-resource "aws_route_table_association" "a" {
+resource "aws_route_table_association" "public_routing_table_association" {
   subnet_id      = "${aws_subnet.terraform_public_subnet.id}"
-  route_table_id = "${aws_route_table.r.id}"
+  route_table_id = "${aws_route_table.route_table.id}"
 }

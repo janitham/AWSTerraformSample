@@ -1,5 +1,5 @@
 /*
-  Public Subnet
+  Private Subnet
 */
 resource "aws_subnet" "terraform_private_subnet" {
   vpc_id = "${aws_vpc.terraform_vpc.id}"

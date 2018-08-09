@@ -5,14 +5,6 @@ resource "aws_security_group" "db" {
   description = "Allow incoming database connections."
 
   ingress {
-    # SQL Server
-    from_port = 1433
-    to_port = 1433
-    protocol = "tcp"
-    security_groups = [
-      "${aws_security_group.web.id}"]
-  }
-  ingress {
     # MySQL
     from_port = 3306
     to_port = 3306
@@ -93,14 +85,6 @@ resource "aws_security_group" "web" {
       "${var.vpc_cidr}"]
   }
 
-  egress {
-    # SQL Server
-    from_port = 1433
-    to_port = 1433
-    protocol = "tcp"
-    cidr_blocks = [
-      "${var.private_subnet_cidr}"]
-  }
   egress {
     # MySQL
     from_port = 3306
