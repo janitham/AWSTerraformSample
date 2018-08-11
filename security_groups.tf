@@ -87,11 +87,10 @@ resource "aws_security_group" "web" {
 
   egress {
     # ALL OUT TRAFFIC ALLOW
-    from_port = -1
-    to_port = -1
-    protocol = "tcp"
-    cidr_blocks = [
-      "${var.all_cidr}"]
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks = ["${var.all_cidr}"]
   }
 
   vpc_id = "${aws_vpc.terraform_vpc.id}"
