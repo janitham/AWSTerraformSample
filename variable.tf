@@ -1,13 +1,5 @@
 #ACCESS
 
-variable "aws_access_key" {
-  default = "**"
-}
-
-variable "aws_secret_key" {
-  default = "**"
-}
-
 resource "aws_key_pair" "aws_terraform" {
   key_name   = "aws_terraform"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2HEuDGn57F72OMXboI8yv7nsy2uZfRTLOn8Ls/ShG3cxAF8rlycDdkI2twuXOpAJVYtDM02diwLhNnPyJEb0EHRv8biKp28b59F+ccx7Bs4DvGh5dOiBWxMLPx0yK1NuUvEu4w7z+h4h+gll3hH8MZk2Vq7DkL2uF4oyCy1ik/J0vfpB2Lqw0JxAJONKGakCO18nsjmlUHRX0HyIUkvhTMxrrtO6du3M4k48RDCExDb9+Z/r7rv8rvPhCBcfgfP+5x9lXSg/6/uuYMR+SuipJZ0EATA3suLZrDkm2hUf4iVn6YZzEjnPMYBB0jYu/aELVoaDBViGUE1XrgWSQ9wIZ email@example.com"
@@ -73,7 +65,7 @@ variable "amis" {
   type = "map"
   description = "AMIs by region"
   default = {
-    us-east-2 = "ami-8c122be9"
+    us-east-2 = "ami-5e8bb23b"
   }
 }
 
