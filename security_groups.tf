@@ -60,7 +60,7 @@ resource "aws_security_group" "web" {
     to_port = 22
     protocol = "tcp"
     cidr_blocks = [
-      "${var.vpc_cidr}"]
+      "${var.all_cidr}"]
   }
 
   ingress {
@@ -68,21 +68,21 @@ resource "aws_security_group" "web" {
     to_port = 80
     protocol = "tcp"
     cidr_blocks = [
-      "${var.vpc_cidr}"]
+      "${var.all_cidr}"]
   }
   ingress {
     from_port = 443
     to_port = 443
     protocol = "tcp"
     cidr_blocks = [
-      "${var.vpc_cidr}"]
+      "${var.all_cidr}"]
   }
   ingress {
     from_port = -1
     to_port = -1
     protocol = "icmp"
     cidr_blocks = [
-      "${var.vpc_cidr}"]
+      "${var.all_cidr}"]
   }
 
   egress {
@@ -91,7 +91,7 @@ resource "aws_security_group" "web" {
     to_port = 3306
     protocol = "tcp"
     cidr_blocks = [
-      "${var.private_subnet_cidr}"]
+      "${var.all_cidr}"]
   }
 
   vpc_id = "${aws_vpc.terraform_vpc.id}"

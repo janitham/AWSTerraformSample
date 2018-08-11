@@ -1,16 +1,16 @@
 #ACCESS
 
 variable "aws_access_key" {
-  default = "***"
+  default = "**"
 }
 
 variable "aws_secret_key" {
-  default = "***"
+  default = "**"
 }
 
-resource "aws_key_pair" "testUser" {
-  key_name   = "testUser"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQz1x2cEikKDEY0aIj41qgxMCP/iteneqXSIFZBp5vizPvaoIR3Um9xK7PGoW8giupGn+EPuxIA4cDM4vzOqOkiMPhz5XK0whEjkVzTo4+S0puvDZuwIsdiW9mxhJc7tgBNL0cYlWSYVkz4G/fslNfRPW5mYAM49f4fhtxPb5ok4Q2Lg9dPKVHO/Bgeu5woMc7RY0p1ej6D4CKFE6lymSDJpW0YHX/wqE9+cfEauh7xZcG0q9t2ta6F6fmX0agvpFyZo8aFbXeUBr7osSCJNgvavWbM/06niWrOvYX2xwWdhXmXSrbX8ZbabVohBK41 email@example.com"
+resource "aws_key_pair" "aws_terraform" {
+  key_name   = "aws_terraform"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2HEuDGn57F72OMXboI8yv7nsy2uZfRTLOn8Ls/ShG3cxAF8rlycDdkI2twuXOpAJVYtDM02diwLhNnPyJEb0EHRv8biKp28b59F+ccx7Bs4DvGh5dOiBWxMLPx0yK1NuUvEu4w7z+h4h+gll3hH8MZk2Vq7DkL2uF4oyCy1ik/J0vfpB2Lqw0JxAJONKGakCO18nsjmlUHRX0HyIUkvhTMxrrtO6du3M4k48RDCExDb9+Z/r7rv8rvPhCBcfgfP+5x9lXSg/6/uuYMR+SuipJZ0EATA3suLZrDkm2hUf4iVn6YZzEjnPMYBB0jYu/aELVoaDBViGUE1XrgWSQ9wIZ email@example.com"
 }
 
 
@@ -31,6 +31,10 @@ variable "private_subnet_availability_zone" {
 
 # CIDR BLOCKS
 
+variable "all_cidr" {
+  description = "CIDR matches all"
+  default = "0.0.0.0/0"
+}
 
 variable "vpc_cidr" {
   description = "CIDR for the whole VPC"
@@ -60,7 +64,7 @@ variable "public_subnet_tag" {
 ### AWS Users
 
 variable "aws_key_name" {
-  default = "testUser"
+  default = "aws_terraform"
 }
 
 # AMI MAP
