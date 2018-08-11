@@ -86,9 +86,9 @@ resource "aws_security_group" "web" {
   }
 
   egress {
-    # MySQL
-    from_port = 3306
-    to_port = 3306
+    # ALL OUT TRAFFIC ALLOW
+    from_port = -1
+    to_port = -1
     protocol = "tcp"
     cidr_blocks = [
       "${var.all_cidr}"]
